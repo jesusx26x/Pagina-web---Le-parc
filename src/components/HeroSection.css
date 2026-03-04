@@ -153,7 +153,8 @@
 .hero__actions .btn--secondary {
     box-shadow: 0 4px 14px rgba(21, 101, 192, 0.18);
     background: #FFFFFF;
-    /* Ensure it pops on regular background */
+    color: var(--lp-blue);
+    /* Fix: Visibilidad del texto sobre fondo blanco */
 }
 
 .hero__actions .btn--secondary:hover {
