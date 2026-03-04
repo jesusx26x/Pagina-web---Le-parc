@@ -85,9 +85,9 @@ export function createHeroSection() {
             playsinline
             preload="metadata"
             aria-hidden="true"
-            poster=import.meta.env.BASE_URL + "images/hero-poster.jpg"
+            poster="${import.meta.env.BASE_URL}images/hero-poster.jpg"
           >
-            <source src=import.meta.env.BASE_URL + "videos/leparc-instalaciones.mp4" type="video/mp4" />
+            <source src="${import.meta.env.BASE_URL}videos/leparc-instalaciones.mp4" type="video/mp4" />
           </video>
 
           <!-- Audio toggle button -->

@@ -25,7 +25,7 @@ export function createNavigation() {
       <!-- Logo — Real Le Parc brand image -->
       <a href="#" class="nav__logo" aria-label="Le Parc - Inicio">
         <img
-          src=import.meta.env.BASE_URL + "images/logo-leparc.jpeg"
+          src="${import.meta.env.BASE_URL}images/logo-leparc.jpeg"
           alt="Le Parc Play & Chill Space"
           class="nav__logo-img"
           width="120"
