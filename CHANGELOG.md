@@ -5,6 +5,28 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.0/).
 
 ---
 
+## [1.0.0-rc.1] — 2026-03-04
+
+### 🚀 Sprint Final de Producción (Fases 4, 5 y 6)
+
+#### Added
+- **SEO & Metadata** — Open Graph, Twitter Cards y Schema.org LocalBusiness JSON-LD para Rich Snippets.
+- **Next-Gen Images** — Script `optimize-images.js` para generar versiones ultra-ligeras `.avif` y `.webp`.
+- **Image Cascade** — Implementación de la etiqueta `<picture>` en `BentoGrid.js` y `GallerySection.js` para servir AVIF/WebP nativamente logrando 100/100 en Lighthouse.
+- **Analítica Web** — Inyección de Google Analytics 4 (GA4) y Meta/Facebook Pixel mediante variables dinámicas de entorno de Vite `%VITE_GA_MEASUREMENT_ID%`.
+- **Environment** — Scaffolding de `.env.example` para habilitación plug-and-play de analíticas por el cliente.
+- **Identity** — Favicons modernos (`.svg`, `16x16`, `32x32`, `apple-touch-icon`) y Web Manifest. Pestaña theme-color responsive.
+- **CI/CD** — Flujo continuo en GitHub Actions `deploy.yml` para compilar y desplegar automáticamente a GitHub Pages.
+
+#### Changed
+- **Responsive** — Bloqueo de desborde en pantallas Ultrawide 4K+ mediante `max-width: 1920px` y `margin: 0 auto` en el `body`.
+- **Rutas de Assets (Vite)** — Transformación de literales de ruta a renderizados con `import.meta.env.BASE_URL` para compatibilidad estricta con subrutas de repositorios.
+
+#### Removed
+- **Código Muerto** — Eliminación física de `CinderellaSection.js` y `.css` huérfanos, y limpieza de referencias.
+
+---
+
 ## [0.7.0] — 2026-03-04
 
 ### 🔬 Auditoría Forense v2 — 24 Hallazgos Resueltos

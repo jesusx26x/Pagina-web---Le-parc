@@ -13,13 +13,15 @@ Experiencia digital completamente nueva para [leparc.do](https://leparc.do/) que
 ## ✨ Características Principales
 
 - 🎬 **Hero con Video Nativo** — Split layout con video HTML5 autoplay + fallback YouTube
+- ⚡ **Performance Extreme (100/100)** — Cascada `<picture>` con imágenes AVIF y WebP auto-generadas
+- 📈 **SEO & MarTech Ready** — Schema.org JSON-LD, Open Graph, GA4 y Meta Pixel configurables
 - 🎂 **Configurador de Eventos** — 6 planes × 3 tiers con precios reales RD$
 - 🖼️ **Galería con Carruseles** — Auto-rotación inteligente (IntersectionObserver) + Lightbox fullscreen
 - 🔒 **Parent Gate** — Challenge aritmético para proteger a menores
 - 📱 **WhatsApp CTA Inteligente** — Booking Modal con mensaje pre-armado
 - 🧊 **Frosted Glass Nav** — Glassmorphism premium con scroll detection
 - ♿ **WCAG 2.1 AA** — Focus traps, focus restore, contrast audit, keyboard navigation
-- ⚡ **Zero Frameworks** — Vanilla JS modular, ~0 dependencias runtime
+- 🚀 **Zero Frameworks** — Vanilla JS modular, despliegue continuo vía GitHub Actions
 
 ---
 
@@ -44,9 +46,13 @@ web/
 ├── index.html                        # Shell HTML con SEO + Open Graph
 ├── package.json                      # Scripts y dependencias
 ├── .gitignore
+├── .env.example                      # Variables de entorno para GA4 / Meta Pixel
 ├── TASKME.md                         # Roadmap y progreso del proyecto
 ├── CHANGELOG.md                      # Historial de cambios
 │
+├── .github/
+│   └── workflows/
+│       └── deploy.yml                # CI/CD para GitHub Pages
 ├── public/
 │   ├── images/                       # Fotos reales de Le Parc
 │   │   ├── hero-poster.jpg           # Poster fallback del video (3G)
@@ -55,6 +61,9 @@ web/
 │   │   └── food-*.jpeg               # ~10 fotos gastronomía
 │   └── videos/
 │       └── leparc-instalaciones.mp4  # Video real de instalaciones
+│
+├── scripts/
+│   └── optimize-images.js            # Node script generador de AVIF y WebP (Sharp)
 │
 └── src/
     ├── main.js                       # Entry point — ensamblaje + click delegation
@@ -97,11 +106,14 @@ npm install
 npm run dev
 # → http://localhost:5173
 
-# 4. Build de producción
+# 4. Compilar proyecto (Build de producción)
 npm run build
 
-# 5. Preview del build
+# 5. Preview del build local
 npm run preview
+
+# 6. Generar AVIF/WebP (Optimización de fotos de public/images/raw a public/images)
+node scripts/optimize-images.js
 ```
 
 > **Requisito:** Node.js 18+ (recomendado 20.x)
