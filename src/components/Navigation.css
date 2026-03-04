@@ -27,6 +27,12 @@
     padding: var(--space-2) 0;
 }
 
+/* M-01: Smart Header — hide on scroll ↓, reveal on scroll ↑ */
+.nav--hidden {
+    transform: translateY(-100%);
+    box-shadow: none;
+}
+
 /* Logo text — always dark background now, no shadow needed */
 .nav__logo-text {
     text-shadow: none;

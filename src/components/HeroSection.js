@@ -168,6 +168,33 @@ export function initHeroVideo() {
       fallbackToYouTube(wrapper);
     });
   }
+
+  // ── M-06: Subtle Hero Parallax (GPU-composited translateY) ──
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reducedMotion) {
+    const hero = document.getElementById('hero');
+    let parallaxTicking = false;
+
+    const onParallaxScroll = () => {
+      if (parallaxTicking) return;
+      parallaxTicking = true;
+
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        const heroH = hero ? hero.offsetHeight : 800;
+
+        // Only apply while hero is in viewport
+        if (scrollY < heroH) {
+          const offset = scrollY * 0.15; // 15% — subtle depth
+          wrapper.style.transform = `translateY(${offset}px)`;
+        }
+
+        parallaxTicking = false;
+      });
+    };
+
+    window.addEventListener('scroll', onParallaxScroll, { passive: true });
+  }
 }
 
 /**

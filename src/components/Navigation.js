@@ -79,12 +79,42 @@ export function initNavigation() {
   const mobile = document.getElementById('nav-mobile');
   if (!nav || !toggle || !mobile) return;
 
+  // ── M-01: Smart Header — hide on scroll ↓, reveal on scroll ↑ ──
+  let lastScrollY = 0;
+  let scrollTicking = false;
+  const SCROLL_THRESHOLD = 5;
+
   const handleScroll = () => {
-    if (window.scrollY > 80) {
-      nav.classList.add('nav--scrolled');
-    } else {
-      nav.classList.remove('nav--scrolled');
-    }
+    if (scrollTicking) return;
+    scrollTicking = true;
+
+    requestAnimationFrame(() => {
+      const currentY = window.scrollY;
+      const delta = currentY - lastScrollY;
+
+      // Scrolled class (compact styling)
+      if (currentY > 80) {
+        nav.classList.add('nav--scrolled');
+      } else {
+        nav.classList.remove('nav--scrolled');
+      }
+
+      // Smart hide/show (only when past nav height)
+      if (currentY < 100) {
+        nav.classList.remove('nav--hidden');
+      } else if (delta > SCROLL_THRESHOLD) {
+        // Scrolling DOWN → hide (unless mobile menu is open)
+        if (!mobile.classList.contains('active')) {
+          nav.classList.add('nav--hidden');
+        }
+      } else if (delta < -SCROLL_THRESHOLD) {
+        // Scrolling UP → show
+        nav.classList.remove('nav--hidden');
+      }
+
+      lastScrollY = currentY;
+      scrollTicking = false;
+    });
   };
 
   window.addEventListener('scroll', handleScroll, { passive: true });
