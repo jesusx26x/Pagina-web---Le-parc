@@ -29,23 +29,8 @@
   <meta name="twitter:image" content="https://leparc.do/images/hero-bg.png" />
 
   <!-- Schema.org / JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Le Parc | Play & Chill Space",
-    "image": "https://leparc.do/images/hero-bg.png",
-    "url": "https://leparc.do/",
-    "telephone": "+1-849-917-2435",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Ave. López de Vega #11",
-      "addressLocality": "Santo Domingo",
-      "addressCountry": "DO"
-    }
-  }
-  </script>
-
+  <script
+    type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Le Parc | Play & Chill Space","image":"https://leparc.do/images/hero-poster.jpg","url":"https://leparc.do/","telephone":"+1-849-917-2435","address":{"@type":"PostalAddress","streetAddress":"Ave. López de Vega #11","addressLocality":"Santo Domingo","addressCountry":"DO"}}</script>
   <!-- Preload: LCP hero image + Google Fonts (reduce FOIT and LCP) -->
   <link rel="preload" as="image" href="/images/hero-bg.png" fetchpriority="high" />
 
@@ -56,13 +41,46 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <!-- Identity & Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#FAFAFA" />
 
   <link rel="canonical" href="https://leparc.do/" />
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GA_MEASUREMENT_ID%"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '%VITE_GA_MEASUREMENT_ID%');
+  </script>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '%VITE_FB_PIXEL_ID%');
+    fbq('track', 'PageView');
+  </script>
 </head>
 
 <body>
+  <!-- Meta Pixel Noscript -->
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=%VITE_FB_PIXEL_ID%&ev=PageView&noscript=1" /></noscript>
   <div id="app"></div>
   <noscript>
     <div
