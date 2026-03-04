@@ -390,7 +390,7 @@ select {
 /* Scroll Reveal — M-02: Cinematic clip-path + scale entrance */
 .reveal {
   opacity: 0;
-  clip-path: inset(10% 0 0 0);
+  clip-path: inset(10% -50% -50% -50%);
   transform: translateY(30px) scale(1.02);
   transition:
     opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
@@ -401,7 +401,8 @@ select {
 
 .reveal.revealed {
   opacity: 1;
-  clip-path: inset(0 0 0 0);
+  clip-path: inset(-50% -50% -50% -50%);
+  /* Allow shadows and absolute badges (overflow) to render */
   transform: translateY(0) scale(1);
 }
 
@@ -423,7 +424,7 @@ select {
 
 .stagger-children>* {
   opacity: 0;
-  clip-path: inset(8% 0 0 0);
+  clip-path: inset(8% -50% -50% -50%);
   transform: translateY(20px) scale(1.01);
   transition:
     opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
@@ -457,7 +458,7 @@ select {
 
 .stagger-children.revealed>* {
   opacity: 1;
-  clip-path: inset(0 0 0 0);
+  clip-path: inset(-50% -50% -50% -50%);
   transform: translateY(0) scale(1);
 }
 
