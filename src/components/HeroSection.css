@@ -142,9 +142,23 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
+    margin-bottom: var(--space-6);
+    /* Added margin for better vertical rhythm */
     opacity: 0;
     transform: translateY(15px);
     animation: heroFadeUp 1s var(--ease-smooth) 1s forwards;
+}
+
+/* 1. Profundidad e Interactividad del Botón de Tickets */
+.hero__actions .btn--secondary {
+    box-shadow: 0 4px 14px rgba(21, 101, 192, 0.18);
+    background: #FFFFFF;
+    /* Ensure it pops on regular background */
+}
+
+.hero__actions .btn--secondary:hover {
+    box-shadow: 0 6px 20px rgba(21, 101, 192, 0.28);
+    transform: translateY(-2px);
 }
 
 @media (min-width: 480px) {
@@ -165,6 +179,8 @@
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-sm);
     margin-top: var(--space-5);
+    margin-bottom: var(--space-8);
+    /* 2. Blindaje spacing vertical vs Scroll Indicator */
     width: fit-content;
     opacity: 0;
     transform: translateY(15px);
@@ -301,6 +317,8 @@
     bottom: var(--space-6);
     left: 25%;
     transform: translateX(-50%);
+    margin-top: var(--space-6);
+    /* 2. Blindaje vs Ticket Badge */
     z-index: 3;
     display: flex;
     flex-direction: column;
