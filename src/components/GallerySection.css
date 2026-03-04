@@ -5,7 +5,8 @@
    ═══════════════════════════════════════════════════════════════════ */
 
 .gallery {
-    background: var(--color-bg-section);
+    background: var(--color-bg);
+    /* Zebra: blanco */
     position: relative;
 }
 

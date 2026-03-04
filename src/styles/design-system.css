@@ -85,14 +85,14 @@
      LIENZO NEUTRO — Estrictamente limpio
      El color viene de la MARCA, no del fondo.
      ════════════════════════════════════════════════ */
-  --color-bg: #FAFAFA;
-  /* Fondo principal — blanco roto limpio */
+  --color-bg: #FFFFFF;
+  /* Fondo principal — blanco puro, limpio */
   --color-bg-warm: #F5F5F0;
   /* Variante arena sutil para alternar secciones */
   --color-bg-card: #FFFFFF;
   /* Cards y superficies elevadas */
-  --color-bg-section: #F0F0ED;
-  /* Secciones alternadas (Bento, Plans) */
+  --color-bg-section: #F7F7F5;
+  /* Secciones alternadas (Bento, Plans) — zebra sutil */
   --color-bg-main: var(--color-bg);
   /* Alias seguro para fondo principal */
 

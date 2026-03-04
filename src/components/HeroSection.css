@@ -80,6 +80,21 @@
     animation: heroFadeUp 0.8s var(--ease-smooth) 0.3s forwards;
 }
 
+/* BLOQUE 3: Dirección interactiva → Google Maps */
+.hero__label-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--duration-base) var(--ease-smooth);
+}
+
+.hero__label-link:hover {
+    color: var(--lp-green);
+}
+
+.hero__label-link:hover .hero__label {
+    color: var(--lp-green);
+}
+
 .hero__label-dot {
     width: 8px;
     height: 8px;

@@ -25,10 +25,12 @@ export function createHeroSection() {
 
       <!-- COL 1: Content (fondo con glow, texto oscuro) -->
       <div class="hero__content">
-        <span class="hero__label">
-          <span class="hero__label-dot" aria-hidden="true"></span>
-          Ave. López de Vega #11, Santo Domingo
-        </span>
+        <a href="https://maps.app.goo.gl/LbaTvtMHcMNPi8Mf7" target="_blank" rel="noopener noreferrer" class="hero__label-link">
+          <span class="hero__label">
+            <span class="hero__label-dot" aria-hidden="true"></span>
+            Ave. López de Vega #11, Santo Domingo
+          </span>
+        </a>
 
         <h1 class="hero__title">
           Más que un parque,<br/>
