@@ -44,10 +44,10 @@ export function createFooter() {
         <nav aria-label="Legal">
           <h4 class="footer__col-title">Legal</h4>
           <ul class="footer__links">
-            <li><a href="#" data-action="legal-modal" class="footer__link">Privacidad</a></li>
-            <li><a href="#" data-action="legal-modal" class="footer__link">Políticas de Seguridad</a></li>
-            <li><a href="#" data-action="legal-modal" class="footer__link">Cookies</a></li>
-            <li><a href="#" data-action="legal-modal" class="footer__link">Cancelaciones</a></li>
+            <li><a href="#" data-legal="privacidad" class="footer__link">Privacidad</a></li>
+            <li><a href="#" data-legal="seguridad" class="footer__link">Políticas de Seguridad</a></li>
+            <li><a href="#" data-legal="cookies" class="footer__link">Cookies</a></li>
+            <li><a href="#" data-legal="cancelaciones" class="footer__link">Cancelaciones</a></li>
           </ul>
         </nav>
 

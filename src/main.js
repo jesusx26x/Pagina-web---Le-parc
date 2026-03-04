@@ -22,6 +22,7 @@ import { createStickyCTA, initStickyCTA } from './components/StickyCTA.js';
 import { createFooter } from './components/Footer.js';
 import { createFloatingWhatsApp } from './components/FloatingWhatsApp.js';
 import { showToast } from './components/Toast.js';
+import { initLegalModal } from './components/LegalModal.js';
 
 // ── Utilities ──
 import { initScrollReveal, initSmoothScrollLinks } from './utils/scrollObserver.js';
@@ -100,6 +101,7 @@ function initApp() {
   initGalleryCarousels();
   initScrollReveal();
   initSmoothScrollLinks();
+  initLegalModal();
 
   // ── Unified click delegation (#18 consolidation) ──
   // Handles plan CTAs → Parent Gate → Booking Modal
@@ -123,13 +125,6 @@ function initApp() {
         () => console.log('[Le Parc] Parent Gate cancelled')
       );
       return;
-    }
-
-    // 2. Legal links: [data-action="legal-modal"]
-    const legalLink = e.target.closest('[data-action="legal-modal"]');
-    if (legalLink) {
-      e.preventDefault();
-      showToast('Documentos legales en proceso de actualización. Disculpe las molestias.', { type: 'info', duration: 5000 });
     }
   });
 
