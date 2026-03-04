@@ -5,7 +5,8 @@
     .configurator {
         background: var(--color-bg-section);
         position: relative;
-        overflow: hidden;
+        overflow: visible;
+        /* Fix clipping of floating badges */
     }
 
     .configurator::before {
@@ -96,6 +97,8 @@
         gap: var(--space-5);
         max-width: 1100px;
         margin: 0 auto;
+        padding-top: var(--space-8);
+        /* Air for floating badges */
     }
 
     @media (min-width: 640px) {
