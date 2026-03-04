@@ -5,6 +5,25 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.0/).
 
 ---
 
+## [1.0.0-rc.2] — 2026-03-04
+
+### 🔬 Auditoría Visual 360° + SEO Automation
+
+#### Added
+- **Sitemap & Robots** — Script `generate-sitemap.js` auto-genera `sitemap.xml` y `robots.txt` en `./dist` vía hook `postbuild` de NPM.
+- **CI/CD Variables** — Fallback de env vars (`VITE_GA_MEASUREMENT_ID`, `VITE_FB_PIXEL_ID`) en GitHub Actions `deploy.yml` para prevenir builds rotos.
+
+#### Fixed
+- **[V-01] Nav Phone Invisible** — Eliminado bloque `.nav__phone` duplicado en `Navigation.css` que sobreescribía el color verde con blanco sobre la barra frosted glass.
+- **[V-03] `--color-text-tertiary`** — Variable CSS inyectada en `:root` (`#888888`). Usada por 6+ componentes pero jamás definida.
+- **[V-04] `--color-bg-main`** — Variable CSS inyectada como alias de `var(--color-bg)`. Sección Corporativa sin fondo corregida.
+- **[V-06] WhatsApp FAB vs StickyCTA** — FAB mobile reposicionado `64px + safe-area` por encima de la barra.
+- **[V-07] Gallery 320px** — Fallback a 1 columna en `max-width: 374px`.
+- **Hero Button "Comprar Entradas"** — Texto invisible corregido con `color: var(--lp-blue)` y `box-shadow` premium.
+- **Hero Spacing** — `margin-bottom: var(--space-8)` en `.hero__ticket` para blindar el "Descubre" del badge de precios.
+
+---
+
 ## [1.0.0-rc.1] — 2026-03-04
 
 ### 🚀 Sprint Final de Producción (Fases 4, 5 y 6)
