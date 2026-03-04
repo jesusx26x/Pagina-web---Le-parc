@@ -29,12 +29,14 @@
 @media (min-width: 768px) {
     .hero__split {
         grid-template-columns: 55% 45%;
+        align-items: center;
     }
 }
 
 @media (min-width: 1200px) {
     .hero__split {
         grid-template-columns: 52% 48%;
+        align-items: center;
     }
 }
 
@@ -43,22 +45,22 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* BLOQUE 1: Padding-top respeta nav-height, padding-bottom aumentado para respirar */
-    padding: calc(var(--nav-height) + var(--space-8)) var(--space-5) calc(var(--nav-height) + var(--space-4));
+    /* Revertido a espaciado natural inferior */
+    padding: calc(var(--nav-height) + var(--space-8)) var(--space-5) var(--space-8);
     z-index: 2;
     position: relative;
 }
 
 @media (min-width: 768px) {
     .hero__content {
-        padding: calc(var(--nav-height) + var(--space-12)) var(--space-8) calc(var(--nav-height) + var(--space-8));
+        padding: calc(var(--nav-height) + var(--space-12)) var(--space-8) var(--space-8);
         padding-right: var(--space-10);
     }
 }
 
 @media (min-width: 1024px) {
     .hero__content {
-        padding: calc(var(--nav-height) + var(--space-16)) var(--space-12) calc(var(--nav-height) + var(--space-12));
+        padding: calc(var(--nav-height) + var(--space-16)) var(--space-12) var(--space-10);
         padding-right: var(--space-16);
     }
 }
@@ -166,10 +168,10 @@
 
 /* 1. Profundidad e Interactividad del Botón de Tickets */
 .hero__actions .btn--secondary {
-    box-shadow: 0 4px 14px rgba(21, 101, 192, 0.18);
+    box-shadow: 0 4px 14px rgba(21, 101, 192, 0.2);
     background: #FFFFFF;
     color: var(--lp-blue);
-    /* Fix: Visibilidad del texto sobre fondo blanco */
+    border: 1px solid var(--color-border);
 }
 
 .hero__actions .btn--secondary:hover {
@@ -189,11 +191,11 @@
     display: inline-flex;
     align-items: center;
     gap: var(--space-3);
-    padding: var(--space-2) var(--space-5);
+    padding: var(--space-3) var(--space-5);
     background: #FFFFFF;
     border-radius: var(--radius-full);
     border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
     margin-top: var(--space-5);
     margin-bottom: var(--space-8);
     /* 2. Blindaje spacing vertical vs Scroll Indicator */
@@ -216,12 +218,12 @@
     font-size: var(--text-lg);
     font-weight: var(--weight-bold);
     color: #B85400;
-    /* Darkened for WCAG AA 4.5:1 on white */
+    /* Naranja oscurecido para contraste AAA */
 }
 
 .hero__ticket-free {
     font-size: var(--text-sm);
-    font-weight: var(--weight-semibold);
+    font-weight: var(--weight-bold);
     color: var(--lp-green);
 }
 
@@ -331,23 +333,15 @@
 .hero__scroll {
     position: absolute;
     bottom: var(--space-6);
-    left: 25%;
+    left: 50%;
     transform: translateX(-50%);
-    margin-top: var(--space-6);
-    /* 2. Blindaje vs Ticket Badge */
     z-index: 3;
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: var(--space-2);
+    /* Horizontal flex para evitar superposiciones con Descubre */
     opacity: 0;
     animation: heroFadeUp 1s var(--ease-smooth) 1.8s forwards;
-}
-
-@media (min-width: 768px) {
-    .hero__scroll {
-        left: 27.5%;
-    }
 }
 
 .hero__scroll-text {

@@ -325,6 +325,8 @@
         display: flex;
         justify-content: center;
         margin-bottom: var(--space-10);
+        padding-top: var(--space-8);
+        /* Air for floating badge */
     }
 
     .plan-card--cumple {
