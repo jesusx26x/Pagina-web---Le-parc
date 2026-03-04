@@ -18,10 +18,10 @@ const GALLERY_GROUPS = [
         tag: 'Interior',
         caption: 'Zona de juegos interior',
         images: [
-            '/images/gallery-ballpit-carousel.jpeg',
-            '/images/gallery-slides-indoor.jpeg',
-            '/images/gallery-ball-pit.jpeg',
-            '/images/bento-indoor-play.jpeg',
+            import.meta.env.BASE_URL + 'images/gallery-ballpit-carousel.jpeg',
+            import.meta.env.BASE_URL + 'images/gallery-slides-indoor.jpeg',
+            import.meta.env.BASE_URL + 'images/gallery-ball-pit.jpeg',
+            import.meta.env.BASE_URL + 'images/bento-indoor-play.jpeg',
         ],
     },
     {
@@ -29,9 +29,9 @@ const GALLERY_GROUPS = [
         tag: 'Atracciones',
         caption: 'Carrusel y atracciones',
         images: [
-            '/images/gallery-carousel-closeup.jpeg',
-            '/images/gallery-play-area.jpeg',
-            '/images/gallery-indoor-toddler.jpeg',
+            import.meta.env.BASE_URL + 'images/gallery-carousel-closeup.jpeg',
+            import.meta.env.BASE_URL + 'images/gallery-play-area.jpeg',
+            import.meta.env.BASE_URL + 'images/gallery-indoor-toddler.jpeg',
         ],
     },
     {
@@ -39,10 +39,10 @@ const GALLERY_GROUPS = [
         tag: 'Exterior',
         caption: 'Parque exterior y zona verde',
         images: [
-            '/images/gallery-playground-slides.jpeg',
-            '/images/gallery-swings-outdoor.jpeg',
-            '/images/gallery-outdoor-adventure.jpeg',
-            '/images/gallery-outdoor-green.jpeg',
+            import.meta.env.BASE_URL + 'images/gallery-playground-slides.jpeg',
+            import.meta.env.BASE_URL + 'images/gallery-swings-outdoor.jpeg',
+            import.meta.env.BASE_URL + 'images/gallery-outdoor-adventure.jpeg',
+            import.meta.env.BASE_URL + 'images/gallery-outdoor-green.jpeg',
         ],
     },
     {
@@ -50,10 +50,10 @@ const GALLERY_GROUPS = [
         tag: 'Aventura',
         caption: 'Escalada y arte al aire libre',
         images: [
-            '/images/gallery-climbing-wall.jpeg',
-            '/images/gallery-mural-outdoor.jpeg',
-            '/images/gallery-mural-detail.jpeg',
-            '/images/gallery-outdoor-toys.jpeg',
+            import.meta.env.BASE_URL + 'images/gallery-climbing-wall.jpeg',
+            import.meta.env.BASE_URL + 'images/gallery-mural-outdoor.jpeg',
+            import.meta.env.BASE_URL + 'images/gallery-mural-detail.jpeg',
+            import.meta.env.BASE_URL + 'images/gallery-outdoor-toys.jpeg',
         ],
     },
     {
@@ -61,11 +61,11 @@ const GALLERY_GROUPS = [
         tag: 'Gastronomía',
         caption: 'Pizzas y pastas artesanales',
         images: [
-            '/images/food-pizza-vegetariana.jpeg',
-            '/images/food-pizza-pepperoni.jpeg',
-            '/images/food-pizza-queso.jpeg',
-            '/images/food-rigatoni.jpeg',
-            '/images/food-pasta-crema.jpeg',
+            import.meta.env.BASE_URL + 'images/food-pizza-vegetariana.jpeg',
+            import.meta.env.BASE_URL + 'images/food-pizza-pepperoni.jpeg',
+            import.meta.env.BASE_URL + 'images/food-pizza-queso.jpeg',
+            import.meta.env.BASE_URL + 'images/food-rigatoni.jpeg',
+            import.meta.env.BASE_URL + 'images/food-pasta-crema.jpeg',
         ],
     },
     {
@@ -73,11 +73,11 @@ const GALLERY_GROUPS = [
         tag: 'Gastronomía',
         caption: 'Platos premium y picaderas',
         images: [
-            '/images/food-sandwich-fries.jpeg',
-            '/images/food-dip-chips.jpeg',
-            '/images/food-risotto.jpeg',
-            '/images/food-ensalada.jpeg',
-            '/images/food-gratinado.jpeg',
+            import.meta.env.BASE_URL + 'images/food-sandwich-fries.jpeg',
+            import.meta.env.BASE_URL + 'images/food-dip-chips.jpeg',
+            import.meta.env.BASE_URL + 'images/food-risotto.jpeg',
+            import.meta.env.BASE_URL + 'images/food-ensalada.jpeg',
+            import.meta.env.BASE_URL + 'images/food-gratinado.jpeg',
         ],
     },
 ];

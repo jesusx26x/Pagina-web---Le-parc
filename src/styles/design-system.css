@@ -49,9 +49,9 @@
   --lp-green-soft: #E8F5E9;
   /* Wash verde SOLO para badges */
 
-  /* ── Le Parc Purple (Cinderella / Especial) ── */
+  /* ── Le Parc Purple (Especial) ── */
   --lp-purple: #7B1FA2;
-  /* Púrpura rico del salón Cinderella */
+  /* Púrpura rico */
   --lp-purple-deep: #6A1B9A;
   /* Púrpura profundo */
   --lp-purple-light: #AB47BC;
@@ -59,7 +59,7 @@
   --lp-purple-soft: #F3E5F5;
   /* Wash lavanda SOLO para badges */
   --lp-lavender: #CE93D8;
-  /* Lila para detalles Cinderella */
+  /* Lila para detalles */
 
   /* ── Le Parc Orange / Yellow (Warm accent) ── */
   --lp-orange: #EF6C00;
@@ -135,8 +135,8 @@
   --text-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
   --text-3xl: clamp(1.85rem, 1.5rem + 1.75vw, 2.75rem);
   --text-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3.5rem);
-  --text-5xl: clamp(2.75rem, 2rem + 3.75vw, 5rem);
-  --text-hero: clamp(2.5rem, 2rem + 3.5vw, 4.5rem);
+  --text-5xl: clamp(2.5rem, 2rem + 3.75vw, 5rem);
+  --text-hero: clamp(2.15rem, 2rem + 3.5vw, 4.5rem);
 
   --weight-light: 300;
   --weight-regular: 400;
@@ -245,6 +245,13 @@ body {
   color: var(--color-text-body);
   background-color: var(--color-bg);
   overflow-x: hidden;
+
+  /* Ultrawide safety (>1440px/4K) */
+  max-width: 1920px;
+  margin: 0 auto;
+  position: relative;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.05);
+  /* Soft border trick for huge screens */
 }
 
 img,
