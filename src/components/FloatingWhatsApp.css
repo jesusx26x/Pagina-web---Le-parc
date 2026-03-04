@@ -102,10 +102,11 @@
     transform: translateY(-50%) translateX(0);
 }
 
-/* Mobile: smaller offset, no tooltip */
-@media (max-width: 767px) {
+/* Mobile: offset above StickyCTA, no tooltip */
+@media (max-width: 768px) {
     .fab-whatsapp {
-        bottom: var(--space-4);
+        /* V-06 Fix: Clear StickyCTA bar (~64px) + safe-area */
+        bottom: calc(var(--space-4) + 64px + env(safe-area-inset-bottom));
         right: var(--space-4);
         width: 54px;
         height: 54px;

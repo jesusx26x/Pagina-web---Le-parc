@@ -334,27 +334,4 @@
     transform: translateY(0);
 }
 
-/* Phone bar */
-.nav__phone {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--text-sm);
-    font-weight: var(--weight-medium);
-    color: rgba(255, 255, 255, 0.85);
-    transition: color var(--duration-base) var(--ease-smooth);
-}
-
-.nav--scrolled .nav__phone {
-    color: var(--lp-blue);
-}
-
-.nav__phone:hover {
-    color: var(--lp-pink);
-}
-
-@media (max-width: 1023px) {
-    .nav__phone {
-        display: none;
-    }
-}
+/* Phone visibility handled by the primary .nav__phone block (L175+) */

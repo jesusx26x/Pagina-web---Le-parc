@@ -47,6 +47,13 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
+/* V-07 Fix: 1-column on ultra-narrow screens (≤374px) */
+@media (max-width: 374px) {
+    .gallery__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (min-width: 640px) {
     .gallery__grid {
         grid-template-columns: repeat(3, 1fr);

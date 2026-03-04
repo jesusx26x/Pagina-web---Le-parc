@@ -93,6 +93,8 @@
   /* Cards y superficies elevadas */
   --color-bg-section: #F0F0ED;
   /* Secciones alternadas (Bento, Plans) */
+  --color-bg-main: var(--color-bg);
+  /* Alias seguro para fondo principal */
 
   --color-divider: rgba(0, 0, 0, 0.06);
   --color-border: rgba(0, 0, 0, 0.08);
@@ -106,6 +108,8 @@
   /* Texto secundario */
   --color-text-muted: #999999;
   /* Etiquetas, metadata */
+  --color-text-tertiary: #888888;
+  /* Metadata, labels, hints — entre muted y secondary */
   --color-text-inverse: #FFFFFF;
   /* Texto sobre fondos oscuros */
 
