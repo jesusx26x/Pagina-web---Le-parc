@@ -1,0 +1,255 @@
+/* ═══════════════════════════════════════════════════════════════════
+   CINDERELLA SECTION — Salón Especial para Niñas
+   "Lujo Auténtico": --lp-purple + --lp-pink como acentos,
+   NUNCA como fondos generales. Lienzo: --color-bg-warm (#F5F5F0).
+   ═══════════════════════════════════════════════════════════════════ */
+
+.cinderella {
+    background: var(--color-bg-warm);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative accent — subtle, NOT a background wash */
+.cinderella::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(123, 31, 162, 0.04) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.cinderella__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .cinderella__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-12);
+    }
+}
+
+/* ── Image side ── */
+.cinderella__visual {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    background: var(--color-bg-section);
+}
+
+/* Skeleton shimmer — GPU-composited */
+.cinderella__visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: var(--color-bg-section);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .cinderella__visual::before {
+        background: linear-gradient(90deg,
+                var(--color-bg-section) 0%,
+                var(--color-bg-card) 50%,
+                var(--color-bg-section) 100%);
+        background-size: 100% 100%;
+        animation: skeleton-shimmer 1.5s ease-in-out infinite;
+    }
+}
+
+.cinderella__visual picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.cinderella__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: none;
+}
+
+/* Floating crown badge */
+.cinderella__crown {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    z-index: 2;
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.92);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: var(--shadow-md);
+}
+
+/* ── Content side ── */
+.cinderella__label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+}
+
+.cinderella__label-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--lp-purple);
+}
+
+.cinderella__title {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-4);
+}
+
+.cinderella__title em {
+    color: var(--lp-purple);
+}
+
+.cinderella__desc {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-6);
+    max-width: 480px;
+}
+
+/* ── Highlights list ── */
+.cinderella__highlights {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-8);
+}
+
+.cinderella__highlight {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--color-text-body);
+    line-height: var(--leading-snug);
+}
+
+.cinderella__highlight-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    background: var(--lp-purple-soft);
+    color: var(--lp-purple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+}
+
+.cinderella__highlight-icon svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* ── Price card ── */
+.cinderella__price-card {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-6);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-6);
+    box-shadow: var(--shadow-sm);
+}
+
+.cinderella__price-from {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+}
+
+.cinderella__price-currency {
+    font-family: var(--font-sans);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-secondary);
+}
+
+.cinderella__price-amount {
+    font-family: var(--font-serif);
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-bold);
+    color: var(--lp-purple);
+}
+
+/* ── CTA ── */
+.cinderella__cta {
+    background: var(--lp-purple);
+    color: var(--color-text-inverse);
+}
+
+.cinderella__cta:hover {
+    background: var(--lp-purple-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(123, 31, 162, 0.35);
+}
+
+/* ── Secondary features grid ── */
+.cinderella__features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-12);
+}
+
+@media (min-width: 640px) {
+    .cinderella__features {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.cinderella__feature {
+    text-align: center;
+    padding: var(--space-5) var(--space-3);
+    background: var(--color-bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    transition: transform var(--duration-base) var(--ease-smooth);
+}
+
+.cinderella__feature:hover {
+    transform: translateY(-4px);
+}
+
+.cinderella__feature-emoji {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-2);
+    display: block;
+}
+
+.cinderella__feature-label {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-body);
+    letter-spacing: var(--tracking-wide);
+}

@@ -1,0 +1,259 @@
+/* ═══════════════════════════════════════════════════════════════════
+   CORPORATE PLANS — Le Parc Private Events
+   "Lujo Auténtico": Lienzo neutro + acentos vibrantes de marca
+   ═══════════════════════════════════════════════════════════════════ */
+
+.corporate {
+    background: var(--color-bg-main);
+    position: relative;
+}
+
+.corporate__header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto var(--space-10);
+}
+
+.corporate__title {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-4);
+}
+
+.corporate__title em {
+    color: var(--lp-purple);
+}
+
+.corporate__subtitle {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+}
+
+/* ── Pricing Cards Grid ── */
+.corporate__grid {
+    display: grid;
+    gap: var(--space-6);
+    grid-template-columns: 1fr;
+    max-width: 960px;
+    margin: 0 auto var(--space-10);
+}
+
+@media (min-width: 640px) {
+    .corporate__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ── Individual Card — Compacted ── */
+.corporate__card {
+    position: relative;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-xl);
+    padding: var(--space-5) var(--space-4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    transition: transform var(--duration-base) var(--ease-smooth),
+        box-shadow var(--duration-base) var(--ease-smooth);
+}
+
+.corporate__card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Highlighted card */
+.corporate__card--highlight {
+    border-color: var(--lp-purple);
+    border-width: 2px;
+    box-shadow: var(--shadow-lg);
+    scale: 1.03;
+}
+
+.corporate__badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--lp-purple);
+    color: #FFFFFF;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: var(--weight-bold);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    padding: var(--space-1) var(--space-4);
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+}
+
+/* ── Capacity — Compacted: 5xl→3xl ── */
+.corporate__capacity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--space-2);
+}
+
+.corporate__capacity-number {
+    font-family: var(--font-serif);
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-bold);
+    color: var(--lp-purple);
+    line-height: 1;
+}
+
+.corporate__capacity-label {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+}
+
+/* ── Pricing ── */
+.corporate__pricing {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-1);
+    margin-bottom: var(--space-2);
+}
+
+.corporate__currency {
+    font-family: var(--font-sans);
+    font-size: var(--text-md);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-secondary);
+}
+
+/* ── Price — Compacted: 3xl→2xl ── */
+.corporate__price {
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-bold);
+    color: var(--color-text-primary);
+}
+
+.corporate__price-note {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--space-2);
+}
+
+/* ── Divider ── */
+.corporate__divider {
+    width: 100%;
+    border: none;
+    border-top: 1px solid var(--color-divider);
+    margin: 0 0 var(--space-4);
+}
+
+/* ── Features List — Compacted ── */
+.corporate__features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-4);
+    width: 100%;
+    text-align: left;
+}
+
+.corporate__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 3px 0;
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+    line-height: 1.3;
+}
+
+.corporate__feature-icon {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    color: var(--lp-green);
+    margin-top: 1px;
+}
+
+/* ── CTA ── */
+.corporate__cta {
+    width: 100%;
+    margin-top: auto;
+}
+
+/* ── Extras Grid ── */
+.corporate__extras {
+    max-width: 800px;
+    margin: 0 auto var(--space-8);
+    text-align: center;
+}
+
+.corporate__extras-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-6);
+    color: var(--color-text-primary);
+}
+
+.corporate__extras-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+}
+
+@media (min-width: 640px) {
+    .corporate__extras-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.corporate__extra {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    transition: transform var(--duration-base) var(--ease-smooth),
+        box-shadow var(--duration-base) var(--ease-smooth);
+}
+
+.corporate__extra:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.corporate__extra-icon {
+    font-size: var(--text-2xl);
+}
+
+/* ── Conditions — Compacted ── */
+.corporate__conditions {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    background: rgba(106, 90, 205, 0.06);
+    border: 1px solid rgba(106, 90, 205, 0.15);
+    border-radius: var(--radius-lg);
+}
+
+.corporate__condition {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-normal);
+}
+
+.corporate__condition strong {
+    color: var(--lp-purple);
+}

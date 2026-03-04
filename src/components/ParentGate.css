@@ -1,0 +1,187 @@
+/* ═══════════════════════════════════════════════════════════════════
+   PARENT GATE — Security Middleware
+   Cognitive challenge modal to block child access
+   ═══════════════════════════════════════════════════════════════════ */
+
+.parent-gate-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-5);
+    background: var(--color-overlay-heavy);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--duration-base) var(--ease-smooth);
+}
+
+.parent-gate-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.parent-gate {
+    width: 100%;
+    max-width: 420px;
+    background: var(--color-bg-card);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8) var(--space-6);
+    box-shadow: var(--shadow-xl);
+    text-align: center;
+    transform: translateY(20px) scale(0.97);
+    transition: transform var(--duration-slow) var(--ease-bounce);
+}
+
+.parent-gate-overlay.active .parent-gate {
+    transform: translateY(0) scale(1);
+}
+
+.parent-gate__icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-full);
+    background: rgba(21, 101, 192, 0.08);
+    color: var(--lp-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-4);
+}
+
+.parent-gate__title {
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-medium);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+}
+
+.parent-gate__desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-normal);
+    margin-bottom: var(--space-6);
+}
+
+/* ── Challenge Display ── */
+.parent-gate__challenge {
+    background: var(--color-bg-section);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6) var(--space-4);
+    margin-bottom: var(--space-5);
+}
+
+.parent-gate__question {
+    font-family: var(--font-serif);
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-primary);
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-4);
+}
+
+.parent-gate__input-group {
+    display: flex;
+    gap: var(--space-2);
+    justify-content: center;
+}
+
+.parent-gate__input {
+    width: 80px;
+    height: 52px;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-primary);
+    background: var(--color-bg-card);
+    transition: border-color var(--duration-fast) var(--ease-smooth);
+    outline: none;
+}
+
+.parent-gate__input:focus {
+    border-color: var(--lp-blue);
+}
+
+.parent-gate__input.error {
+    border-color: var(--lp-pink);
+    animation: parentGateShake 0.4s ease-in-out;
+}
+
+.parent-gate__submit {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    background: var(--lp-blue);
+    color: var(--color-text-inverse);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--duration-fast) var(--ease-smooth);
+    cursor: pointer;
+    border: none;
+}
+
+.parent-gate__submit:hover {
+    background: var(--lp-blue-mid);
+}
+
+/* ── Error Message ── */
+.parent-gate__error {
+    font-size: var(--text-sm);
+    color: var(--lp-pink);
+    margin-top: var(--space-3);
+    opacity: 0;
+    transition: opacity var(--duration-fast) var(--ease-smooth);
+}
+
+.parent-gate__error.visible {
+    opacity: 1;
+}
+
+/* ── Close/Cancel ── */
+.parent-gate__cancel {
+    margin-top: var(--space-4);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: inherit;
+    transition: color var(--duration-fast) var(--ease-smooth);
+}
+
+.parent-gate__cancel:hover {
+    color: var(--color-text-secondary);
+}
+
+/* ── Shake error animation ── */
+@keyframes parentGateShake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-8px);
+    }
+
+    40% {
+        transform: translateX(8px);
+    }
+
+    60% {
+        transform: translateX(-6px);
+    }
+
+    80% {
+        transform: translateX(6px);
+    }
+}

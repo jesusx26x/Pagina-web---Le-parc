@@ -1,0 +1,649 @@
+/* ═══════════════════════════════════════════════════════════════════
+   LE PARC | PLAY & CHILL SPACE — Design System v2
+   ─────────────────────────────────────────────────
+   "LUJO AUTÉNTICO" — NO pasteles deslavados.
+   Colores ricos y profundos del local físico real,
+   usados como acentos sobre un lienzo neutro.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ════════════════════════════════════════════════
+     BRAND COLORS — VIBRANTES, RICOS, PROFUNDOS
+     Tomados directamente de la fachada y branding
+     real de Le Parc, SIN desaturar.
+     ════════════════════════════════════════════════ */
+
+  /* ── Le Parc Blue (Primary) ── */
+  --lp-blue: #1565C0;
+  /* Azul real de la fachada — intenso, confiable */
+  --lp-blue-deep: #0D47A1;
+  /* Azul profundo para hover/footer */
+  --lp-blue-dark: #0A1628;
+  /* Navy oscuro para fondos dark */
+  --lp-blue-mid: #1E88E5;
+  /* Azul medio para links activos */
+  --lp-blue-light: #42A5F5;
+  /* Azul claro para indicadores */
+  --lp-blue-soft: #E3F2FD;
+  /* Wash tenue SOLO para fondos de badges */
+
+  /* ── Le Parc Pink / Rose (Secondary) ── */
+  --lp-pink: #E91E6C;
+  /* Rosa real Le Parc — vivo, energético */
+  --lp-pink-deep: #C2185B;
+  /* Rosa profundo para hover */
+  --lp-pink-light: #F06292;
+  /* Rosa para acentos suaves */
+  --lp-pink-soft: #FCE4EC;
+  /* Wash rosado SOLO para backgrounds de badges */
+  --lp-rose: #AD1457;
+  /* Rose para estados activos */
+
+  /* ── Le Parc Green (Accent) ── */
+  --lp-green: #43A047;
+  /* Verde fuerte del logo — natural, confianza */
+  --lp-green-deep: #2E7D32;
+  /* Verde intenso para hover */
+  --lp-green-light: #66BB6A;
+  /* Verde para checks/confirmaciones */
+  --lp-green-soft: #E8F5E9;
+  /* Wash verde SOLO para badges */
+
+  /* ── Le Parc Purple (Cinderella / Especial) ── */
+  --lp-purple: #7B1FA2;
+  /* Púrpura rico del salón Cinderella */
+  --lp-purple-deep: #6A1B9A;
+  /* Púrpura profundo */
+  --lp-purple-light: #AB47BC;
+  /* Púrpura para acentos */
+  --lp-purple-soft: #F3E5F5;
+  /* Wash lavanda SOLO para badges */
+  --lp-lavender: #CE93D8;
+  /* Lila para detalles Cinderella */
+
+  /* ── Le Parc Orange / Yellow (Warm accent) ── */
+  --lp-orange: #EF6C00;
+  /* Naranja intenso — energía, diversión */
+  --lp-orange-deep: #E65100;
+  /* Naranja profundo */
+  --lp-orange-light: #FF9800;
+  /* Ámbar cálido */
+  --lp-yellow: #FDD835;
+  /* Amarillo brillante para highlights */
+  --lp-orange-soft: #FFF3E0;
+  /* Wash naranja SOLO para badges */
+
+  /* ── Le Parc Turquoise (marca original) ── */
+  --lp-turquoise: #00ACC1;
+  /* Turquesa real de la fachada */
+  --lp-turquoise-deep: #00838F;
+  /* Turquesa intenso */
+  --lp-turquoise-soft: #E0F7FA;
+  /* Wash turquesa SOLO para badges */
+
+  /* ════════════════════════════════════════════════
+     LIENZO NEUTRO — Estrictamente limpio
+     El color viene de la MARCA, no del fondo.
+     ════════════════════════════════════════════════ */
+  --color-bg: #FAFAFA;
+  /* Fondo principal — blanco roto limpio */
+  --color-bg-warm: #F5F5F0;
+  /* Variante arena sutil para alternar secciones */
+  --color-bg-card: #FFFFFF;
+  /* Cards y superficies elevadas */
+  --color-bg-section: #F0F0ED;
+  /* Secciones alternadas (Bento, Plans) */
+
+  --color-divider: rgba(0, 0, 0, 0.06);
+  --color-border: rgba(0, 0, 0, 0.08);
+
+  /* ── TEXTO — Alto contraste ── */
+  --color-text-primary: #1A1A1A;
+  /* Casi negro para headings */
+  --color-text-body: #333333;
+  /* Cuerpo de texto — legible */
+  --color-text-secondary: #666666;
+  /* Texto secundario */
+  --color-text-muted: #999999;
+  /* Etiquetas, metadata */
+  --color-text-inverse: #FFFFFF;
+  /* Texto sobre fondos oscuros */
+
+  /* ── OVERLAYS ── */
+  --color-overlay: rgba(10, 22, 40, 0.55);
+  --color-overlay-heavy: rgba(10, 22, 40, 0.80);
+
+  /* ── GLASSMORPHISM (Nav) ── */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-bg-dark: rgba(10, 22, 40, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.25);
+  --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --glass-blur: 20px;
+
+  /* ════════════════════════════════════════════════
+     TYPOGRAPHY
+     ════════════════════════════════════════════════ */
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --text-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.75rem);
+  --text-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.875rem);
+  --text-base: clamp(0.9rem, 0.85rem + 0.25vw, 1rem);
+  --text-md: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-lg: clamp(1.1rem, 1rem + 0.5vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+  --text-3xl: clamp(1.85rem, 1.5rem + 1.75vw, 2.75rem);
+  --text-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3.5rem);
+  --text-5xl: clamp(2.75rem, 2rem + 3.75vw, 5rem);
+  --text-hero: clamp(2.5rem, 2rem + 3.5vw, 4.5rem);
+
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.3;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+
+  --tracking-tighter: -0.03em;
+  --tracking-tight: -0.015em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.05em;
+  --tracking-wider: 0.1em;
+  --tracking-widest: 0.2em;
+
+  /* ════════════════════════════════════════════════
+     SPACING
+     ════════════════════════════════════════════════ */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* ════════════════════════════════════════════════
+     SHAPES & EFFECTS
+     ════════════════════════════════════════════════ */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 40px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.10), 0 4px 8px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.06);
+
+  /* ════════════════════════════════════════════════
+     TRANSITIONS
+     ════════════════════════════════════════════════ */
+  --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 500ms;
+  --duration-crawl: 800ms;
+
+  /* ════════════════════════════════════════════════
+     Z-INDEX & LAYOUT
+     ════════════════════════════════════════════════ */
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+  --z-top: 999;
+
+  --container-max: 1440px;
+  --container-wide: 1200px;
+  --container-md: 960px;
+  --nav-height: 72px;
+  --touch-target: 44px;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════════════════════════════ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text-body);
+  background-color: var(--color-bg);
+  overflow-x: hidden;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+::selection {
+  background-color: var(--lp-pink);
+  color: var(--color-text-inverse);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   TYPOGRAPHY UTILITIES
+   ═══════════════════════════════════════════════════════════════════ */
+.heading-serif {
+  font-family: var(--font-serif);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+}
+
+/* Accent color variants — used ONLY on key words */
+.heading-serif em {
+  font-style: italic;
+  color: var(--lp-blue);
+}
+
+.text-label {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   LAYOUT
+   ═══════════════════════════════════════════════════════════════════ */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--space-8);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--space-12);
+  }
+}
+
+.section {
+  padding: var(--space-16) 0;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: var(--space-20) 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding: var(--space-24) 0;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   GLASSMORPHISM (Navigation only)
+   ═══════════════════════════════════════════════════════════════════ */
+.glass {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   INTERACTIVE — Hover, Reveal
+   ═══════════════════════════════════════════════════════════════════ */
+.hover-lift {
+  transition: transform var(--duration-base) var(--ease-smooth),
+    box-shadow var(--duration-base) var(--ease-smooth);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Scroll Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--duration-crawl) var(--ease-smooth),
+    transform var(--duration-crawl) var(--ease-smooth);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal--delay-1 {
+  transition-delay: 100ms;
+}
+
+.reveal--delay-2 {
+  transition-delay: 200ms;
+}
+
+.reveal--delay-3 {
+  transition-delay: 300ms;
+}
+
+.reveal--delay-4 {
+  transition-delay: 400ms;
+}
+
+.stagger-children>* {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--duration-slow) var(--ease-smooth),
+    transform var(--duration-slow) var(--ease-smooth);
+}
+
+.stagger-children.revealed>*:nth-child(1) {
+  transition-delay: 80ms;
+}
+
+.stagger-children.revealed>*:nth-child(2) {
+  transition-delay: 180ms;
+}
+
+.stagger-children.revealed>*:nth-child(3) {
+  transition-delay: 280ms;
+}
+
+.stagger-children.revealed>*:nth-child(4) {
+  transition-delay: 380ms;
+}
+
+.stagger-children.revealed>*:nth-child(5) {
+  transition-delay: 480ms;
+}
+
+.stagger-children.revealed>*:nth-child(6) {
+  transition-delay: 580ms;
+}
+
+.stagger-children.revealed>* {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   BUTTONS — Colores fuertes como acento sobre lienzo neutro
+   ═══════════════════════════════════════════════════════════════════ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--touch-target);
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-sans);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  transition: all var(--duration-base) var(--ease-smooth);
+  cursor: pointer;
+  white-space: nowrap;
+  border: 2px solid transparent;
+}
+
+.btn--primary {
+  background: var(--lp-blue);
+  color: var(--color-text-inverse);
+}
+
+.btn--primary:hover {
+  background: var(--lp-blue-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(21, 101, 192, 0.35);
+}
+
+.btn--pink {
+  background: var(--lp-pink);
+  color: var(--color-text-inverse);
+}
+
+.btn--pink:hover {
+  background: var(--lp-pink-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(233, 30, 108, 0.35);
+}
+
+.btn--green {
+  background: var(--lp-green);
+  color: var(--color-text-inverse);
+}
+
+.btn--green:hover {
+  background: var(--lp-green-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(67, 160, 71, 0.35);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--color-text-inverse);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #fff;
+  transform: translateY(-2px);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 2px solid var(--color-border);
+}
+
+.btn--ghost:hover {
+  background: var(--color-bg-section);
+  border-color: var(--color-text-muted);
+}
+
+.btn--whatsapp {
+  background: #25D366;
+  color: #fff;
+}
+
+.btn--whatsapp:hover {
+  background: #1DA851;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+}
+
+.btn--lg {
+  min-height: 52px;
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--text-base);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   DIVIDER — Marca de color sobre fondo neutro
+   ═══════════════════════════════════════════════════════════════════ */
+.divider {
+  width: 60px;
+  height: 3px;
+  background: var(--lp-pink);
+  border: none;
+  margin: var(--space-4) 0;
+  border-radius: 2px;
+}
+
+.divider--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SKELETON LOADING — GPU-composited shimmer for image containers.
+   Uses transform: translateX (GPU layer) instead of background-position
+   (CPU repaint). Wrapped in prefers-reduced-motion for accessibility.
+   Apply .skeleton to any container awaiting async content.
+   ═══════════════════════════════════════════════════════════════════ */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-bg-section);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--color-bg-card) 50%,
+        transparent 100%);
+    animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  }
+}
+
+/* GPU-composited: transform triggers compositor, zero layout/paint */
+@keyframes skeleton-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════════════════════════════════════ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lp-blue);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   ACCESSIBILITY
+   ═══════════════════════════════════════════════════════════════════ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--lp-blue);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

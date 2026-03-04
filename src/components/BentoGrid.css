@@ -1,0 +1,684 @@
+/* ═══════════════════════════════════════════════════════════════════
+   BENTO GRID — Le Parc Experiencias
+   ─────────────────────────────────
+   LUJO AUTÉNTICO: Preparado para fotos reales altamente saturadas.
+   CERO filtros grayscale/sepia. Skeleton loaders neutros.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.services {
+    background: var(--color-bg-section);
+    position: relative;
+}
+
+.services__header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto var(--space-12);
+}
+
+@media (min-width: 768px) {
+    .services__header {
+        margin-bottom: var(--space-16);
+    }
+}
+
+.services__label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+}
+
+.services__title {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-4);
+}
+
+.services__title em {
+    color: var(--lp-blue);
+}
+
+.services__subtitle {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   BENTO GRID LAYOUT — Uniform grid, no spans, no gaps
+   ═══════════════════════════════════════════════════════════════════ */
+.bento {
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+    .bento {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-5);
+    }
+}
+
+@media (min-width: 1024px) {
+    .bento {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-6);
+    }
+}
+
+/* Span variants removed — uniform blocks prevent white gaps */
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   BENTO CARD
+   Designed to frame REAL, SATURATED photos without breaking.
+   NO grayscale. NO sepia. NO desaturation filters.
+   ═══════════════════════════════════════════════════════════════════ */
+.bento__item {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    /* Blindaje geométrico: aspect-ratio uniforme + min-height de respaldo */
+    aspect-ratio: 4 / 3;
+    min-height: 280px;
+    cursor: pointer;
+    background: var(--color-bg-section);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--duration-base) var(--ease-smooth),
+        box-shadow var(--duration-base) var(--ease-smooth);
+}
+
+/* Skeleton shimmer — GPU-composited via transform (zero repaints).
+   The ::before slides a highlight band across the neutral background.
+   Wrapped in prefers-reduced-motion for accessibility (F-06). */
+.bento__item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: var(--color-bg-section);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .bento__item::before {
+        background: linear-gradient(90deg,
+                var(--color-bg-section) 0%,
+                var(--color-bg-card) 50%,
+                var(--color-bg-section) 100%);
+        background-size: 100% 100%;
+        animation: skeleton-shimmer 1.5s ease-in-out infinite;
+    }
+}
+
+@keyframes skeleton-shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* min-height fallback for browsers without aspect-ratio support */
+@media (min-width: 640px) {
+    .bento__item {
+        min-height: 300px;
+    }
+}
+
+.bento__item:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* ── Image Container ──
+   object-fit: cover STRICT — no stretching, no letterboxing.
+   Images fill the entire card and crop to fit.
+   NO filter applied — photos must display at full saturation. */
+
+/* ── Carousel Container (replaces single image-wrap) ── */
+.bento__carousel {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* All carousel images stacked, only --active visible */
+.bento__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: none;
+    opacity: 0;
+    transition: opacity 800ms ease, transform var(--duration-crawl) var(--ease-smooth);
+    z-index: 0;
+}
+
+.bento__image--active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.bento__item:hover .bento__image--active {
+    transform: scale(1.05);
+}
+
+/* ── Carousel Dots ── */
+.bento__carousel-dots {
+    position: absolute;
+    bottom: var(--space-2);
+    right: var(--space-2);
+    z-index: 5;
+    display: flex;
+    gap: 4px;
+}
+
+.bento__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: background 200ms ease, transform 200ms ease;
+}
+
+.bento__dot--active {
+    background: #fff;
+    transform: scale(1.3);
+}
+
+/* ── Overlay — Bottom gradient for text readability ──
+   ONLY darkens the bottom portion where text lives.
+   Top is transparent to let the photo's color shine through. */
+.bento__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.82) 0%,
+            rgba(0, 0, 0, 0.40) 40%,
+            rgba(0, 0, 0, 0.05) 70%,
+            transparent 100%);
+    transition: background var(--duration-base) var(--ease-smooth);
+    z-index: 1;
+}
+
+.bento__item:hover .bento__overlay {
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.85) 0%,
+            rgba(0, 0, 0, 0.30) 50%,
+            transparent 100%);
+}
+
+/* ── Content (over overlay) ── */
+.bento__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--space-5);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+@media (min-width: 768px) {
+    .bento__content {
+        padding: var(--space-6);
+    }
+}
+
+/* ── Icon badge ── */
+.bento__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-1);
+    /* Semi-transparent white — works on any photo bg */
+    background: rgba(255, 255, 255, 0.18);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    transition: background var(--duration-base) var(--ease-smooth);
+}
+
+/* Color-coded per section — VIBRANT accents */
+.bento__icon--blue {
+    color: #64B5F6;
+}
+
+/* Light blue on dark overlay */
+.bento__icon--pink {
+    color: #F48FB1;
+}
+
+/* Pink */
+.bento__icon--green {
+    color: #81C784;
+}
+
+/* Green */
+.bento__icon--orange {
+    color: #FFB74D;
+}
+
+/* Orange */
+.bento__icon--purple {
+    color: #CE93D8;
+}
+
+/* Purple */
+
+.bento__item:hover .bento__icon {
+    background: rgba(255, 255, 255, 0.28);
+}
+
+/* ── Tag (category label) ── */
+/* AAA Contrast Blindaje: text-shadow ensures legibility even if
+   the overlay fails against high-luminosity video/photo backgrounds */
+.bento__tag {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wider);
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    /* Strong, vibrant accent — NOT pastel */
+    color: var(--lp-pink-light);
+}
+
+/* ── Title ── */
+.bento__title {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    font-weight: var(--weight-medium);
+    line-height: var(--leading-snug);
+    color: #FFFFFF;
+    /* AAA Blindaje: guarantees 7:1 contrast on any photo background */
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.bento__item--featured .bento__title {
+    font-size: var(--text-2xl);
+}
+
+/* ── Description ── */
+.bento__desc {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-regular);
+    line-height: var(--leading-normal);
+    color: rgba(255, 255, 255, 0.80);
+    max-width: 380px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Arrow indicator ── */
+.bento__arrow {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.12);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    opacity: 0;
+    transform: translate(-5px, 5px);
+    transition: all var(--duration-base) var(--ease-smooth);
+    z-index: 2;
+}
+
+.bento__item:hover .bento__arrow {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   ABOUT / NOSOTROS SECTION — Centered editorial layout
+   ═══════════════════════════════════════════════════════════════════ */
+.about {
+    background: var(--color-bg-warm);
+}
+
+/* Single-column centered editorial */
+.about__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.about__title {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-4);
+}
+
+@media (min-width: 768px) {
+    .about__title {
+        font-size: var(--text-4xl);
+    }
+}
+
+.about__title em {
+    color: var(--lp-blue);
+}
+
+/* Centered divider */
+.divider--center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about__text {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-6);
+    max-width: 680px;
+}
+
+.about__values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    justify-content: center;
+}
+
+.about__value {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-bg-card);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--color-text-body);
+    border: 1px solid var(--color-border);
+}
+
+.about__value-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+/* MVV + Characters breathing room */
+.about__mvv {
+    margin-top: var(--space-12);
+}
+
+.about__characters {
+    margin-top: var(--space-10);
+}
+
+/* Characters — clickable */
+.about__characters {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--space-8);
+}
+
+.about__character {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-5);
+    background: var(--color-bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-divider);
+    min-width: 110px;
+    cursor: pointer;
+    transition: transform var(--duration-base) var(--ease-smooth),
+        box-shadow var(--duration-base) var(--ease-smooth);
+}
+
+.about__character:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+}
+
+.about__character:focus-visible {
+    outline: 2px solid var(--lp-pink);
+    outline-offset: 3px;
+}
+
+.about__character-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+}
+
+.about__character-name {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+    color: var(--color-text-secondary);
+    text-align: center;
+    line-height: 1.3;
+}
+
+.about__character-name strong {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-bold);
+    color: var(--color-text-primary);
+    margin-top: 1px;
+}
+
+.about__character-info {
+    color: var(--lp-pink);
+    opacity: 0.7;
+    transition: opacity 200ms ease;
+}
+
+.about__character:hover .about__character-info {
+    opacity: 1;
+}
+
+/* ═══ MVV Cards (Misión · Visión · Valores) ═══ */
+.about__mvv {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+}
+
+@media (min-width: 768px) {
+    .about__mvv {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-5);
+    }
+}
+
+.about__mvv-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-xl);
+    padding: var(--space-5);
+    text-align: center;
+    transition: transform var(--duration-base) var(--ease-smooth),
+        box-shadow var(--duration-base) var(--ease-smooth);
+}
+
+.about__mvv-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.about__mvv-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-lg);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-3);
+}
+
+.about__mvv-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+}
+
+.about__mvv-text {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+}
+
+/* ═══ Character Modal ═══ */
+.char-modal {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms ease;
+}
+
+.char-modal--open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.char-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+}
+
+.char-modal__card {
+    position: relative;
+    z-index: 1;
+    width: min(420px, calc(100vw - var(--space-8)));
+    background: var(--color-bg-card);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transform: scale(0.9) translateY(20px);
+    transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.char-modal--open .char-modal__card {
+    transform: scale(1) translateY(0);
+}
+
+.char-modal__close {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    z-index: 5;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: background 150ms ease;
+}
+
+.char-modal__close:hover {
+    background: #fff;
+}
+
+.char-modal__hero {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.char-modal__emoji {
+    font-size: 4rem;
+    animation: char-bounce 600ms ease;
+}
+
+@keyframes char-bounce {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.char-modal__body {
+    padding: var(--space-5) var(--space-6) var(--space-6);
+    text-align: center;
+}
+
+.char-modal__name {
+    font-family: var(--font-serif);
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-bold);
+    margin-bottom: var(--space-3);
+}
+
+.char-modal__traits {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-4);
+}
+
+.char-modal__trait {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-bold);
+}
+
+.char-modal__desc {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+}

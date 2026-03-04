@@ -1,0 +1,390 @@
+    /* ═══════════════════════════════════════════════════════════════════
+   EVENT CONFIGURATOR — Le Parc Birthday Plans
+   ═══════════════════════════════════════════════════════════════════ */
+
+    .configurator {
+        background: var(--color-bg-section);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .configurator::before {
+        content: '';
+        position: absolute;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(233, 30, 108, 0.06) 0%, transparent 70%);
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+    .configurator__header {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto var(--space-10);
+    }
+
+    .configurator__title {
+        font-size: var(--text-4xl);
+        margin-bottom: var(--space-4);
+    }
+
+    .configurator__title em {
+        color: var(--lp-blue);
+    }
+
+    .configurator__subtitle {
+        font-size: var(--text-md);
+        color: var(--color-text-secondary);
+        line-height: var(--leading-relaxed);
+    }
+
+    /* Tabs — 5 plan capacities */
+    .configurator__tabs {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--space-2);
+        margin-bottom: var(--space-10);
+        padding: var(--space-2);
+        border-radius: var(--radius-full);
+        background: var(--color-bg-card);
+        border: 1px solid var(--color-divider);
+        box-shadow: var(--shadow-sm);
+        max-width: 740px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .configurator__tab {
+        padding: var(--space-2) var(--space-4);
+        border-radius: var(--radius-full);
+        font-family: var(--font-sans);
+        font-size: var(--text-xs);
+        font-weight: var(--weight-semibold);
+        letter-spacing: var(--tracking-wide);
+        color: var(--color-text-secondary);
+        transition: all var(--duration-base) var(--ease-smooth);
+        white-space: nowrap;
+    }
+
+    @media (min-width: 640px) {
+        .configurator__tab {
+            padding: var(--space-2) var(--space-5);
+            font-size: var(--text-sm);
+        }
+    }
+
+    .configurator__tab:hover {
+        color: var(--lp-blue);
+    }
+
+    .configurator__tab.active {
+        background: var(--lp-blue);
+        color: var(--color-text-inverse);
+        box-shadow: 0 4px 12px rgba(21, 101, 192, 0.35);
+    }
+
+    /* Plans Grid */
+    .configurator__plans {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-5);
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 640px) {
+        .configurator__plans {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (min-width: 960px) {
+        .configurator__plans {
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-6);
+        }
+    }
+
+    /* Plan Card — Compacted: reduced padding for higher information density */
+    .plan-card {
+        position: relative;
+        background: var(--color-bg-card);
+        border-radius: var(--radius-xl);
+        padding: var(--space-4) var(--space-4);
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--color-divider);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+        transition: all var(--duration-base) var(--ease-smooth);
+    }
+
+    @media (min-width: 768px) {
+        .plan-card {
+            padding: var(--space-5) var(--space-4);
+        }
+    }
+
+    .plan-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-xl);
+    }
+
+    .plan-card--recommended {
+        border: 2px solid var(--lp-pink);
+        box-shadow: var(--shadow-lg), 0 0 40px rgba(233, 30, 108, 0.15);
+    }
+
+    .plan-card__badge {
+        position: absolute;
+        top: -14px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, var(--lp-pink), var(--lp-rose));
+        color: var(--color-text-inverse);
+        font-size: var(--text-xs);
+        font-weight: var(--weight-bold);
+        letter-spacing: var(--tracking-wider);
+        text-transform: uppercase;
+        padding: var(--space-1) var(--space-5);
+        border-radius: var(--radius-full);
+        white-space: nowrap;
+    }
+
+    /* Icon — Compacted: 56→40px, smaller margin */
+    .plan-card__icon {
+        width: 40px;
+        height: 40px;
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: var(--space-2);
+    }
+
+    .plan-card__icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .plan-card__icon--basic {
+        background: var(--lp-blue-soft);
+        color: var(--lp-blue);
+    }
+
+    .plan-card__icon--premium {
+        background: var(--lp-pink-soft);
+        color: var(--lp-pink);
+    }
+
+    .plan-card__icon--plus {
+        background: var(--lp-purple-soft);
+        color: var(--lp-purple);
+    }
+
+    /* Name — Compacted: 2xl→xl */
+    .plan-card__name {
+        font-family: var(--font-serif);
+        font-size: var(--text-xl);
+        font-weight: var(--weight-semibold);
+        color: var(--color-text-primary);
+        margin-bottom: 2px;
+    }
+
+    .plan-card__tagline {
+        font-size: var(--text-xs);
+        color: var(--color-text-muted);
+        margin-bottom: var(--space-2);
+    }
+
+    /* Capacity pill — Compacted: tighter padding + margin */
+    .plan-card__capacity {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-1);
+        font-size: var(--text-xs);
+        font-weight: var(--weight-medium);
+        color: var(--lp-blue);
+        background: var(--lp-blue-soft);
+        padding: 2px var(--space-3);
+        border-radius: var(--radius-full);
+        margin-bottom: var(--space-3);
+    }
+
+    .plan-card__pricing {
+        display: flex;
+        align-items: baseline;
+        gap: var(--space-1);
+        margin-bottom: var(--space-1);
+    }
+
+    .plan-card__currency {
+        font-family: var(--font-sans);
+        font-size: var(--text-lg);
+        font-weight: var(--weight-semibold);
+        color: var(--color-text-secondary);
+    }
+
+    /* Price — Compacted: 3xl→2xl, tighter margins */
+    .plan-card__price {
+        font-family: var(--font-serif);
+        font-size: var(--text-2xl);
+        font-weight: var(--weight-bold);
+        color: var(--color-text-primary);
+        letter-spacing: var(--tracking-tight);
+    }
+
+    .plan-card__price-note {
+        font-size: var(--text-xs);
+        color: var(--color-text-muted);
+        margin-bottom: var(--space-3);
+    }
+
+    .plan-card__price-note em {
+        color: var(--lp-pink);
+        font-style: normal;
+        font-weight: var(--weight-semibold);
+    }
+
+    .plan-card__divider {
+        width: 100%;
+        border: none;
+        height: 1px;
+        background: var(--color-divider);
+        margin-bottom: var(--space-3);
+    }
+
+    /* Features — Compacted: smaller gap, tighter line-height, smaller icons */
+    .plan-card__features {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin-bottom: var(--space-4);
+        text-align: left;
+    }
+
+    .plan-card__feature {
+        display: flex;
+        align-items: flex-start;
+        gap: 6px;
+        font-size: var(--text-xs);
+        color: var(--color-text-secondary);
+        line-height: 1.3;
+    }
+
+    .plan-card__feature-icon {
+        flex-shrink: 0;
+        width: 14px;
+        height: 14px;
+        color: var(--lp-green);
+        margin-top: 1px;
+    }
+
+    .plan-card__cta {
+        width: 100%;
+        margin-top: auto;
+    }
+
+    /* Notice */
+    .configurator__notice {
+        text-align: center;
+        margin-top: var(--space-8);
+        padding: var(--space-4) var(--space-6);
+        background: rgba(232, 135, 155, 0.08);
+        border: 1px solid rgba(232, 135, 155, 0.15);
+        border-radius: var(--radius-lg);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .configurator__notice-text {
+        font-size: var(--text-sm);
+        color: var(--color-text-secondary);
+        line-height: var(--leading-normal);
+    }
+
+    .configurator__notice-text strong {
+        color: var(--lp-pink);
+    }
+
+    /* ═══ Cumpleaños Feliz — standalone highlighted card ═══ */
+    .configurator__cumple-feliz {
+        display: flex;
+        justify-content: center;
+        margin-bottom: var(--space-10);
+    }
+
+    .plan-card--cumple {
+        border-top: 4px solid var(--lp-orange);
+        max-width: 420px;
+        box-shadow: var(--shadow-lg);
+        position: relative;
+    }
+
+    .plan-card__icon--cumple {
+        background: rgba(239, 108, 0, 0.1);
+        color: var(--lp-orange);
+    }
+
+    /* Orange CTA button */
+    .btn--orange {
+        background: var(--lp-orange);
+        color: #FFFFFF;
+        border: none;
+    }
+
+    .btn--orange:hover {
+        background: var(--lp-orange-deep);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(239, 108, 0, 0.35);
+    }
+
+    /* ═══ CRO: Price Anchor — per-child cost to reduce sticker shock ═══ */
+    .plan-price-anchor {
+        display: block;
+        font-family: var(--font-sans);
+        font-size: var(--text-xs);
+        font-weight: var(--weight-semibold);
+        color: var(--lp-green);
+        letter-spacing: var(--tracking-wide);
+        margin-bottom: 2px;
+    }
+
+    /* ═══ CRO: Urgency Badge — subtle demand signal ═══ */
+    .badge-urgency {
+        position: absolute;
+        top: var(--space-3);
+        right: var(--space-3);
+        font-size: 10px;
+        font-weight: var(--weight-semibold);
+        letter-spacing: var(--tracking-wide);
+        color: var(--lp-pink);
+        background: rgba(233, 30, 108, 0.08);
+        border: 1px solid rgba(233, 30, 108, 0.2);
+        padding: 2px var(--space-2);
+        border-radius: var(--radius-full);
+        white-space: nowrap;
+        animation: urgency-pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes urgency-pulse {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.65;
+        }
+    }
