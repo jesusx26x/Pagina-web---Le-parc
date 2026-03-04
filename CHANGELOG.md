@@ -5,6 +5,27 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.0/).
 
 ---
 
+## [1.0.0-rc.3] — 2026-03-04
+
+### 🎬 Motion UI, Legal Modal & Visual Polish
+
+#### Added
+- **[M-01] Smart Header** — Nav bar se oculta al hacer scroll ↓ y reaparece con scroll ↑. `rAF`-throttled, `transform: translateY(-100%)` GPU-composited.
+- **[M-02] Cinematic Reveals** — Reemplazo del fade-in básico por entradas con `clip-path: inset(10% 0 0 0) → inset(0)` + `scale(1.02) → scale(1)` en 1.2s con `cubic-bezier(0.16, 1, 0.3, 1)`.
+- **[M-06] Hero Parallax** — Video card se desplaza a `scrollY * 0.15` creando profundidad elegante. Solo activo en viewport del hero.
+- **Legal Modal** — Componente `LegalModal.js` con `<dialog>` nativo, contenido para 4 secciones (Privacidad, Seguridad, Cookies, Cancelaciones), backdrop blur, y WCAG §2.4.3 focus return.
+- **Google Maps Embed** — Iframe estético en Footer con bordes redondeados, sombra y filtro de brillo que se activa en hover.
+
+#### Changed
+- **Zebra Backgrounds** — `--color-bg: #FFFFFF` (blanco puro), `--color-bg-section: #F7F7F5` (gris sutil). Patrón de alternancia Hero→Bento→Gallery→Events→Corporate.
+- **Dirección Interactiva** — Link en Hero envuelto en `<a>` hacia Google Maps con hover verde.
+- **Footer Legal Links** — `data-action="legal-modal"` → `data-legal="privacidad|seguridad|cookies|cancelaciones"` específicos.
+
+#### Removed
+- **Toast Fallback** — Eliminada la lógica temporal que mostraba un toast para los enlaces legales.
+
+---
+
 ## [1.0.0-rc.2] — 2026-03-04
 
 ### 🔬 Auditoría Visual 360° + SEO Automation
