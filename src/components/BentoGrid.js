@@ -334,12 +334,18 @@ export function createBentoGrid() {
             aria-label="${service.title}: ${service.desc}"
           >
             <div class="bento__carousel" data-carousel="${service.id}">
-              ${service.images.map((src, i) => `
-                <img class="bento__image ${i === 0 ? 'bento__image--active' : ''}"
-                     src="${src}" alt="${service.title} — Foto ${i + 1}"
-                     loading="lazy" decoding="async"
-                     data-index="${i}" />
-              `).join('')}
+              ${service.images.map((src, i) => {
+    const basePath = src.replace(/\.(png|jpe?g)$/i, '');
+    return `
+                <picture>
+                  <source srcset="${basePath}.avif" type="image/avif">
+                  <source srcset="${basePath}.webp" type="image/webp">
+                  <img class="bento__image ${i === 0 ? 'bento__image--active' : ''}"
+                       src="${src}" alt="${service.title} — Foto ${i + 1}"
+                       loading="lazy" decoding="async"
+                       data-index="${i}" />
+                </picture>
+              `}).join('')}
               <div class="bento__carousel-dots">
                 ${service.images.map((_, i) => `
                   <span class="bento__dot ${i === 0 ? 'bento__dot--active' : ''}" data-dot="${i}"></span>

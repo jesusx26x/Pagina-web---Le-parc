@@ -114,11 +114,17 @@ export function createGallerySection() {
         ${GALLERY_GROUPS.map(group => `
           <div class="gallery__item" id="gallery-${group.id}" role="listitem"
                data-gallery-carousel="${group.id}">
-            ${group.images.map((src, i) => `
-              <img class="gallery__img ${i === 0 ? 'gallery__img--active' : ''}"
-                   src="${src}" alt="${group.caption} — Foto ${i + 1}"
-                   loading="lazy" decoding="async" data-index="${i}" />
-            `).join('')}
+            ${group.images.map((src, i) => {
+        const basePath = src.replace(/\.(png|jpe?g)$/i, '');
+        return `
+              <picture>
+                <source srcset="${basePath}.avif" type="image/avif">
+                <source srcset="${basePath}.webp" type="image/webp">
+                <img class="gallery__img ${i === 0 ? 'gallery__img--active' : ''}"
+                     src="${src}" alt="${group.caption} — Foto ${i + 1}"
+                     loading="lazy" decoding="async" data-index="${i}" />
+              </picture>
+            `}).join('')}
             <div class="gallery__carousel-dots">
               ${group.images.map((_, i) => `
                 <span class="gallery__dot ${i === 0 ? 'gallery__dot--active' : ''}" data-dot="${i}"></span>
